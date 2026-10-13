@@ -1,324 +1,196 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Tanamancantik — Rare Plants</title>
-
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #080b0a;
-  color: #f5f5f0;
-}
-
-.hero {
-  min-height: 100vh;
-  padding: 28px 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(5,8,7,0.15),
-      rgba(5,8,7,0.96)
-    ),
-    radial-gradient(
-      circle at center,
-      #304536 0%,
-      #111914 45%,
-      #070908 100%
-    );
-}
-
-.logo {
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 3px;
-}
-
-.logo span {
-  color: #b7c8a6;
-}
-
-.hero-content {
-  padding-bottom: 45px;
-}
-
-.eyebrow {
-  color: #b8c9a9;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
-h1 {
-  font-family: Georgia, serif;
-  font-size: 48px;
-  line-height: 0.98;
-  font-weight: 400;
-  letter-spacing: -2px;
-  margin-bottom: 20px;
-}
-
-.description {
-  color: #c7cbc5;
-  font-size: 15px;
-  line-height: 1.7;
-  max-width: 340px;
-  margin-bottom: 28px;
-}
-
-.button {
-  display: inline-block;
-  padding: 15px 24px;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 40px;
-  color: white;
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.section {
-  padding: 70px 22px;
-  background: #f1f0e9;
-  color: #111510;
-}
-
-.section-label {
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: #65715f;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.section h2 {
-  font-family: Georgia, serif;
-  font-size: 36px;
-  font-weight: 400;
-  margin-bottom: 35px;
-}
-
-.item {
-  border-top: 1px solid #c9ccc3;
-  padding: 22px 0;
-}
-
-.item-number {
-  font-size: 11px;
-  color: #687262;
-  margin-bottom: 8px;
-}
-
-.item h3 {
-  font-family: Georgia, serif;
-  font-size: 24px;
-  font-weight: 400;
-  margin-bottom: 7px;
-}
-
-.item p {
-  font-size: 13px;
-  color: #62675f;
-  margin-bottom: 15px;
-}
-
-.price {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.contact {
-  padding: 70px 22px;
-  background: #080b0a;
-  text-align: center;
-}
-
-.contact h2 {
-  font-family: Georgia, serif;
-  font-size: 34px;
-  font-weight: 400;
-  margin-bottom: 15px;
-}
-
-.contact p {
-  color: #9da49d;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 28px;
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.links a {
-  color: white;
-  text-decoration: none;
-  border: 1px solid #333a34;
-  border-radius: 30px;
-  padding: 14px;
-  font-size: 13px;
-}
-
-footer {
-  padding: 25px;
-  background: #080b0a;
-  text-align: center;
-  color: #59605a;
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-</style>
-</head>
-
-<body>
-
-<section class="hero">
-
-  <div class="logo">
-    TANAMANCANTIK<span>®</span>
-  </div>
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      Rare Item Collection
-    </div>
-
-    <h1>
-      Rare plants.<br>
-      Extraordinary forms.
-    </h1>
-
-    <p class="description">
-      A curated collection of rare and collectible plants,
-      cultivated in Indonesia and available for collectors worldwide.
-    </p>
-
-    <a href="#collection" class="button">
-      Explore Collection
-    </a>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="collection">
-
-  <div class="section-label">
-    Tanamancantik Collection
-  </div>
-
-  <h2>
-    Rare Items
-  </h2>
-
-  <div class="item">
-
-    <div class="item-number">01</div>
-
-    <h3>
-      Rare Anthurium
-    </h3>
-
-    <p>
-      Selected specimen · Limited availability
-    </p>
-
-    <div class="price">
-      Price on request
-    </div>
-
-  </div>
-
-
-  <div class="item">
-
-    <div class="item-number">02</div>
-
-    <h3>
-      Variegated Collection
-    </h3>
-
-    <p>
-      Unique variegation · Collector grade
-    </p>
-
-    <div class="price">
-      Price on request
-    </div>
-
-  </div>
-
-
-  <div class="item">
-
-    <div class="item-number">03</div>
-
-    <h3>
-      Private Collection
-    </h3>
-
-    <p>
-      Rare specimens available by inquiry
-    </p>
-
-    <div class="price">
-      Price on request
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="contact">
-
-  <h2>
-    Collect something rare.
-  </h2>
-
-  <p>
-    Interested in a specimen?<br>
-    Contact Tanamancantik for availability,
-    pricing and international orders.
-  </p>
-
-  <div class="links">
-
-    <a href="https://instagram.com/tanamancantik_">
-      Instagram
-    </a>
-
-    <a href="mailto:andikaasaputraandikaa@gmail.com">
-      Email
-    </a>
-
-  </div>
-
-</section>
-
-
-<footer>
-  © 2026 TANAMANCANTIK · INDONESIA
-</footer>
-
-</body>
-</html>
+TANAMANCANTIK®
+CATALOGUE
+CONTACT
+INDONESIAN RARE PLANT COLLECTION
+Rare plants. Extraordinary forms.
+A curated collection of rare Anthurium hybrids and selected variegated plants, grown and offered by TANAMANCANTIK® in Indonesia.
+EXPLORE COLLECTION ↓
+COLLECTOR PLANTS · INDONESIA
+Distinct genetics. One-of-a-kind character.
+We prioritize real plant photographs. Product photos should be added only after matching each photo to the exact plant listing.
+THE COLLECTION
+Available catalogue
+Prices are shown in USD from previously saved catalogue notes. Availability and prices must be reconfirmed before purchase.
+
+Sort: catalogue orderPrice: low to highPrice: high to low
+All listingsFor saleDisplay only
+01 / ANTHURIUM
+Megatron × Carlablackiae
+Hybrid listing.
+$475
+Availability to be confirmed
+STOCK UNCONFIRMED
+02 / ANTHURIUM
+PapxMag × RC NSE
+Hybrid listing.
+$115
+Availability to be confirmed
+STOCK UNCONFIRMED
+03 / VARIEGATED
+Red Spider Variegated
+Variegated plant listing.
+$110
+Availability to be confirmed
+STOCK UNCONFIRMED
+04 / ANTHURIUM
+KOS × RC NSE Albo
+Saved notes: 12 cm pot, 5 leaves, seed-grown; white-pink color with KOS genetics.
+$1,500
+Size and availability need reconfirmation
+STOCK UNCONFIRMED
+05 / ANTHURIUM
+Anthurium GINI Albo Variegated
+Silver × KOS Red · L pot, 10 cm · cut top / sale. Rare white mutation noted from green parents.
+$1,050
+Availability to be confirmed
+STOCK UNCONFIRMED
+06 / ANTHURIUM
+PapxMag × Dockblock
+PapxMagni × Dockblock Red NSE · orange variegated · XL pot, 17 cm · mother-size with flowers noted.
+$870
+Availability to be confirmed
+STOCK UNCONFIRMED
+07 / ANTHURIUM
+Anthurium Red Devil Pink
+Papil pink red devil × self · XL pot, 12 cm.
+$450
+Availability to be confirmed
+STOCK UNCONFIRMED
+08 / ANTHURIUM
+KOS Butterfly Variegated
+Original clone · adolescent, 5 leaves · L pot, 10 cm.
+$1,000
+Availability to be confirmed
+STOCK UNCONFIRMED
+09 / ANTHURIUM
+Anthurium Purity Albo Variegated
+KOS × RC NSE · XL pot, 15 cm · described in saved notes as super rare.
+$2,650
+Availability to be confirmed
+STOCK UNCONFIRMED
+10 / ANTHURIUM
+Forgetii × Michelle — Variant 1
+L pot, 10 cm noted.
+$270
+Availability to be confirmed
+STOCK UNCONFIRMED
+11 / ANTHURIUM
+Forgetii × Michelle — Variant 2
+L pot, 10 cm noted.
+$275
+Availability to be confirmed
+STOCK UNCONFIRMED
+12 / ANTHURIUM
+KOS Pink Variegated
+Original KOS white/pink · L pot, 12 cm noted.
+$4,000
+Availability to be confirmed
+STOCK UNCONFIRMED
+13 / ANTHURIUM
+Christallinum Pink Albo
+Variegated listing.
+$235
+Availability to be confirmed
+STOCK UNCONFIRMED
+14 / ANTHURIUM
+Anthurium Red Devil
+Papil pink red devil × self · XL pot, 15 cm · flowering mother-size, seed-grown noted.
+$750
+Availability to be confirmed
+STOCK UNCONFIRMED
+15 / ANTHURIUM
+Blackvenom × Dresleri Indo Var — 1
+L pot, 12 cm noted.
+$250
+Availability to be confirmed
+STOCK UNCONFIRMED
+16 / ANTHURIUM
+Blackvenom × Dresleri Indo Var — 2
+L pot, 12 cm noted.
+$300
+Availability to be confirmed
+STOCK UNCONFIRMED
+17 / ANTHURIUM
+Blackvenom × Dresleri Indo Var — 3
+L pot, 12 cm noted.
+$300
+Availability to be confirmed
+STOCK UNCONFIRMED
+18 / ANTHURIUM
+Blackvenom × Dresleri Indo Var — 4
+L pot, 12 cm noted.
+$260
+Availability to be confirmed
+STOCK UNCONFIRMED
+19 / ANTHURIUM
+Blackvenom × Dresleri Indo Var — 5
+M pot, 10 cm noted.
+$165
+Availability to be confirmed
+STOCK UNCONFIRMED
+20 / ANTHURIUM
+Dorayaki Silver × Red Tiger Var
+Variegated hybrid listing.
+$300
+Availability to be confirmed
+STOCK UNCONFIRMED
+21 / ANTHURIUM
+Blackvenom × Dockblock NSE
+Hybrid listing.
+$850
+Availability to be confirmed
+STOCK UNCONFIRMED
+22 / ANTHURIUM
+Silverblush × KOS Red
+Hybrid listing.
+$450
+Availability to be confirmed
+STOCK UNCONFIRMED
+23 / ANTHURIUM
+Blackvenom × AOS Tezula
+Orange variegated · seed-grown · L size noted.
+$400
+Availability to be confirmed
+STOCK UNCONFIRMED
+24 / ANTHURIUM
+Blackvenom × SKG Silver
+Orange variegated · M size noted.
+$170
+Availability to be confirmed
+STOCK UNCONFIRMED
+25 / DISPLAY ONLY
+KOS Butterfly — Mother Plant
+Display only; not for sale.
+Not for sale
+Listed for showcase only
+DISPLAY ONLY
+26 / ANTHURIUM
+KOS Albo Variegated
+Original white-variegated clone · XL size noted.
+$1,550
+Availability to be confirmed
+STOCK UNCONFIRMED
+27 / ANTHURIUM
+Pterodaktil Variegated
+XL size; old notes mention wholesale-ready stock.
+$75
+Availability to be reconfirmed
+STOCK UNCONFIRMED
+28 / ANTHURIUM
+Christallinum Platinum Albo White
+Variegated listing.
+$250
+Availability to be confirmed
+STOCK UNCONFIRMED
+29 / ANTHURIUM
+Queen Ruby Albo
+Mutation noted from hofmanii × KOS · 12 cm pot, 4 leaves in saved notes.
+$700
+Availability to be reconfirmed
+STOCK UNCONFIRMED
+Catalogue details are based on previously saved notes and are not a live inventory. Prices, plant size, and availability may change. Please contact us to confirm the exact plant before payment. No online checkout or payment processing is active on this page yet.
+ENQUIRIES & PURCHASING
+Looking for a specific plant?
+Contact us to confirm current availability, receive real photos of the exact plant, and discuss shipping before payment.
+Instagram @tanamancantik_ ↗
+© TANAMANCANTIK® · Indonesian rare plant collection
