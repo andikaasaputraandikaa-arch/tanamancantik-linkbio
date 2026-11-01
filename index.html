@@ -1,231 +1,133 @@
-
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <meta name="theme-color" content="#10110e">
-
+<meta name="description" content="Discover distinctive Anthurium varieties and collectible rare plants grown in Indonesia by TANAMANCANTIK.">
 <title>TANAMANCANTIK® — Rare Plants</title>
-
 <style>
-
-:root{--bg:#10110e;--panel:#191a16;--text:#f4f1e9;--muted:#aaa99e;--line:#35362e;--gold:#d4c19a}
-
+:root{--bg:#10110e;--panel:#191a16;--text:#f4f1e9;--muted:#aaa99e;--line:#35362e;--gold:#d4c19a;--tag:#292a22}
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
-
 body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
-
 a{color:inherit;text-decoration:none}
-
 header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:15px}
-
 .brand{font-size:17px;font-weight:800;letter-spacing:2px}
-
 nav{display:flex;gap:22px;font-size:12px;letter-spacing:1px}
-
 .hero{padding:85px 6% 70px;max-width:1150px;margin:auto}
-
 .eyebrow{color:var(--gold);font-size:11px;letter-spacing:3px}
-
 h1{font-family:Georgia,serif;font-size:clamp(42px,8vw,82px);line-height:1.06;font-weight:400;margin:18px 0}
-
 .hero p{color:var(--muted);max-width:520px}
-
 .btn{display:inline-block;margin-top:20px;padding:12px 20px;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:1px}
-
 section{padding:45px 6%;max-width:1250px;margin:auto}
-
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap}
-
 h2{font-family:Georgia,serif;font-weight:400;font-size:34px;margin:8px 0}
-
 .muted{color:var(--muted);font-size:13px}
-
 .tools{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
-
 input,select{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:12px;border-radius:0;font-size:14px;min-width:0}
-
 input{flex:1;min-width:170px}
-
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-
-.card{background:var(--panel);border:1px solid var(--line);min-width:0}
-
-.photo{height:190px;background:#24251f;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#8e8d80;text-align:center;padding:10px}
-
-.photo img{width:100%;height:100%;object-fit:cover}
-
+.card{background:var(--panel);border:1px solid var(--line);min-width:0;overflow:hidden}
+.photo{height:210px;background:#24251f;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#8e8d80;text-align:center;padding:10px}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:0}
+.photo-gallery a{display:block;min-width:0;height:100%;overflow:hidden}
+.photo-gallery img{transition:transform .35s ease}
+.photo-gallery a:hover img{transform:scale(1.04)}
 .cardbody{padding:17px}
-
 .card h3{font-family:Georgia,serif;font-size:19px;font-weight:400;line-height:1.35;margin:0 0 8px}
-
 .price{color:var(--gold);font-size:17px;margin:10px 0}
-
 .details{color:var(--muted);font-size:12px;min-height:35px}
-
-.card a{display:block;border-top:1px solid var(--line);padding-top:12px;margin-top:15px;color:var(--gold);font-size:11px;letter-spacing:1px}
-
+.status{display:inline-block;margin-top:10px;padding:4px 8px;background:var(--tag);border:1px solid var(--line);color:var(--gold);font-size:10px;letter-spacing:1px;text-transform:uppercase}
+.status.display{color:var(--muted)}
+.card a.enquire{display:block;border-top:1px solid var(--line);padding-top:12px;margin-top:15px;color:var(--gold);font-size:11px;letter-spacing:1px}
 .note{border:1px solid var(--line);padding:20px;color:var(--muted);font-size:13px;margin-top:25px}
-
 .contact{background:#191a16;text-align:center;padding:55px 20px;margin-top:35px}
-
 footer{border-top:1px solid var(--line);padding:25px 6%;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:160px}}
-
-@media(max-width:480px){header{padding:18px 5%}nav{gap:12px;font-size:10px}.brand{font-size:13px}.hero{padding:65px 5% 45px}section{padding:35px 5%}.grid{gap:10px}.photo{height:125px}.cardbody{padding:12px}.card h3{font-size:16px}.price{font-size:15px}}
-
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:180px}}
+@media(max-width:480px){header{padding:18px 5%}nav{gap:12px;font-size:10px}.brand{font-size:13px}.hero{padding:65px 5% 45px}section{padding:35px 5%}.grid{gap:10px}.photo{height:135px}.cardbody{padding:12px}.card h3{font-size:16px}.price{font-size:15px}.photo-gallery{gap:2px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 </style>
-
 </head>
-
 <body>
-
 <header>
-
 <a class="brand" href="#">TANAMANCANTIK®</a>
-
 <nav><a href="#catalogue">CATALOGUE</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a></nav>
-
 </header>
-
 <main>
-
 <div class="hero">
-
 <div class="eyebrow">INDONESIAN RARE PLANT COLLECTION</div>
-
 <h1>Rare plants.<br>Extraordinary forms.</h1>
-
 <p>Discover distinctive Anthurium varieties and collectible plants grown in Indonesia by TANAMANCANTIK®.</p>
-
 <a class="btn" href="#catalogue">EXPLORE COLLECTION ↘</a>
-
 </div>
-
 <section id="catalogue">
-
 <div class="section-head"><div><div class="eyebrow">THE COLLECTION</div><h2>Available Catalogue</h2></div><div class="muted">Prices in USD · Please confirm availability</div></div>
-
 <div class="tools">
-
 <input id="search" type="search" placeholder="Search plant varieties..." aria-label="Search plants">
-
 <select id="sort" aria-label="Sort by price"><option value="default">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select>
-
 </div>
-
-<div class="grid" id="products"></div>
-
-<p class="note">Prices and stock may change. Contact us to confirm current availability, plant condition, shipping cost and import requirements before ordering. Product photos will be added as the original images are uploaded.</p>
-
+<div class="grid" id="products" aria-live="polite"></div>
+<p class="note">Stock status is unconfirmed until checked directly with TANAMANCANTIK®. Prices and availability may change. Contact us to confirm current availability, plant condition, shipping cost and import requirements before ordering. The KOS Butterfly Mother Plant is shown for display only and is not for sale.</p>
 </section>
-
 <section id="about"><div class="eyebrow">OUR STORY</div><h2>Grown in Indonesia.</h2><p class="muted">TANAMANCANTIK® is an Indonesian collectible plant business focused on distinctive Anthurium varieties and international plant customers.</p></section>
-
-<div class="contact" id="contact"><div class="eyebrow">GET IN TOUCH</div><h2>Find your next rare plant.</h2><p class="muted">Ask us about availability, plant details and international shipping.</p><a class="btn" href="https://www.instagram.com/tanamancantik_/" target="_blank" rel="noopener">CONTACT ON INSTAGRAM ↗</a></div>
-
+<div class="contact" id="contact"><div class="eyebrow">GET IN TOUCH</div><h2>Find your next rare plant.</h2><p class="muted">Ask us about availability, plant details and international shipping.</p><a class="btn" href="https://www.instagram.com/tanamancantik_/" target="_blank" rel="noopener noreferrer">CONTACT ON INSTAGRAM ↗</a></div>
 </main>
-
 <footer><span>TANAMANCANTIK®</span><span>Rare plants. Extraordinary forms.</span><span>© 2026</span></footer>
-
 <script>
-
 const plants=[
-
-["Megatron × Carlablackiae",475,"Rare collectible Anthurium",["IMG_3250.jpeg","IMG_3234.jpeg","IMG_3251.jpeg"]],
-
-["PapxMag × RC NSE",115,"Collectible Anthurium"],
-
-["Red Spider Variegated",110,"Variegated Anthurium"],
-
-["KOS × RC NSE ALBO",1500,"12 cm · 5 leaves · seed-grown"],
-
-["Anthurium GINI Albo Variegated",1050,"Silver × KOS Red · 10 cm · L"],
-
-["Anthurium PapxMag × Dockblock",870,"17 cm · XL · mother-size"],
-
-["Anthurium Red Devil Pink",450,"12 cm · XL"],
-
-["KOS Butterfly Variegated",1000,"Original clone · 5 leaves"],
-
-["Anthurium Purity Albo Variegated",2650,"15 cm · XL"],
-
-["Forgetii × Michelle — 1",270,"10 cm · L"],
-
-["Forgetii × Michelle — 2",275,"10 cm · L"],
-
-["KOS Pink Variegated",4000,"Original white-pink variegation"],
-
-["Christallinum Pink Albo",235,"Collectible Anthurium"],
-
-["Anthurium Red Devil",750,"15 cm · XL · seed-grown"],
-
-["Blackvenom × Dresleri Indo Var — 1",250,"12 cm · L"],
-
-["Blackvenom × Dresleri Indo Var — 2",300,"12 cm · L"],
-
-["Blackvenom × Dresleri Indo Var — 3",300,"12 cm · L"],
-
-["Blackvenom × Dresleri Indo Var — 4",260,"12 cm · L"],
-
-["Blackvenom × Dresleri Indo Var — 5",165,"10 cm · M"],
-
-["Dorayaki Silver × Red Tiger Var",300,"Collectible Anthurium"],
-
-["Blackvenom × Dockblock NSE",850,"15 cm · XL"],
-
-["Silverblush × KOS Red",450,"12 cm · L"],
-
-["Blackvenom × AOS Tezula",400,"Size L · seed-grown"],
-
-["Blackvenom × SKG Silver",170,"Size M"],
-
-["KOS Albo Variegated",1550,"Original white-variegated clone · XL"],
-
-["Pterodaktil Variegated",75,"Size XL"],
-
-["Christallinum Platinum Albo White",250,"Collectible Anthurium"],
-
-["Queen Ruby Albo",700,"12 cm · 4 leaves"]
-
+{name:"Megatron × Carlablackiae",price:475,details:"Rare collectible Anthurium",photos:["IMG_3250.jpeg","IMG_3234.jpeg","IMG_3251.jpeg"]},
+{name:"PapxMag × RC NSE",price:115,details:"Collectible Anthurium"},
+{name:"Red Spider Variegated",price:110,details:"Variegated Anthurium"},
+{name:"KOS × RC NSE ALBO",price:1500,details:"12 cm · 5 leaves · seed-grown"},
+{name:"Anthurium GINI Albo Variegated",price:1050,details:"Silver × KOS Red · 10 cm · L"},
+{name:"Anthurium PapxMag × Dockblock",price:870,details:"17 cm · XL · mother-size"},
+{name:"Anthurium Red Devil Pink",price:450,details:"12 cm · XL"},
+{name:"KOS Butterfly Variegated",price:1000,details:"Original clone · 5 leaves"},
+{name:"Anthurium Purity Albo Variegated",price:2650,details:"15 cm · XL"},
+{name:"Forgetii × Michelle — 1",price:270,details:"10 cm · L"},
+{name:"Forgetii × Michelle — 2",price:275,details:"10 cm · L"},
+{name:"KOS Pink Variegated",price:4000,details:"Original white-pink variegation"},
+{name:"Christallinum Pink Albo",price:235,details:"Collectible Anthurium"},
+{name:"Anthurium Red Devil",price:750,details:"15 cm · XL · seed-grown"},
+{name:"Blackvenom × Dresleri Indo Var — 1",price:250,details:"12 cm · L"},
+{name:"Blackvenom × Dresleri Indo Var — 2",price:300,details:"12 cm · L"},
+{name:"Blackvenom × Dresleri Indo Var — 3",price:300,details:"12 cm · L"},
+{name:"Blackvenom × Dresleri Indo Var — 4",price:260,details:"12 cm · L"},
+{name:"Blackvenom × Dresleri Indo Var — 5",price:165,details:"10 cm · M"},
+{name:"Dorayaki Silver × Red Tiger Var",price:300,details:"Collectible Anthurium"},
+{name:"Blackvenom × Dockblock NSE",price:850,details:"15 cm · XL"},
+{name:"Silverblush × KOS Red",price:450,details:"12 cm · L"},
+{name:"Blackvenom × AOS Tezula",price:400,details:"Size L · seed-grown"},
+{name:"Blackvenom × SKG Silver",price:170,details:"Size M"},
+{name:"KOS Albo Variegated",price:1550,details:"Original white-variegated clone · XL"},
+{name:"Pterodaktil Variegated",price:75,details:"Size XL"},
+{name:"Christallinum Platinum Albo White",price:250,details:"Collectible Anthurium"},
+{name:"Queen Ruby Albo",price:700,details:"12 cm · 4 leaves"},
+{name:"KOS Butterfly Mother Plant",displayOnly:true,details:"Mother plant showcase · not for sale"}
 ];
-
 const grid=document.getElementById("products");
-
+const instagram="https://www.instagram.com/tanamancantik_/";
 function render(){
-
- const q=document.getElementById("search").value.toLowerCase();
-
+ const q=document.getElementById("search").value.trim().toLowerCase();
  const sort=document.getElementById("sort").value;
-
- let list=plants.filter(p=>p[0].toLowerCase().includes(q));
-
- if(sort==="low")list.sort((a,b)=>a[1]-b[1]);
-
- if(sort==="high")list.sort((a,b)=>b[1]-a[1]);
-
-grid.innerHTML=list.map(p=>`<article class="card"><div class="photo">${p[3]?p[3].map(src=>`<img src="${src}" alt="${p[0]}" style="width:${100/p[3].length}%;height:100%;object-fit:cover">`).join(""):"TANAMANCANTIK® · PLANT PHOTO"}</div><div class="cardbody"><h3>${p[0]}</h3><div class="price">$${p[1].toLocaleString("en-US")} USD</div><div class="details">${p[2]||"Details available on request"}</div><a href="https://www.instagram.com/tanamancantik_/" target="_blank" rel="noopener">ENQUIRE ABOUT THIS PLANT ↗</a></div></article>`).join("");
-
+ let list=plants.filter(p=>(p.name+" "+(p.details||"")).toLowerCase().includes(q));
+ if(sort==="low")list.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));
+ if(sort==="high")list.sort((a,b)=>(b.price??-Infinity)-(a.price??-Infinity));
+ grid.innerHTML=list.map(p=>{
+  const gallery=p.photos?.length
+   ?'<div class="photo photo-gallery">'+p.photos.map((src,i)=>'<a href="'+src+'" target="_blank" rel="noopener noreferrer" aria-label="Open photo '+(i+1)+' of '+p.name+'"><img src="'+src+'" alt="'+p.name+' — photo '+(i+1)+'" loading="lazy"></a>').join("")+'</div>'
+   :'<div class="photo">TANAMANCANTIK® · PLANT PHOTO</div>';
+  const status=p.displayOnly?'<span class="status display">Display only · Not for sale</span>':'<span class="status">Stock unconfirmed</span>';
+  const price=p.displayOnly?'<div class="price">Not for sale</div>':'<div class="price">$'+p.price.toLocaleString("en-US")+' USD</div>';
+  const enquire=p.displayOnly?'':'<a class="enquire" href="'+instagram+'" target="_blank" rel="noopener noreferrer">ENQUIRE ABOUT THIS PLANT ↗</a>';
+  return '<article class="card">'+gallery+'<div class="cardbody"><h3>'+p.name+'</h3>'+price+'<div class="details">'+(p.details||"Details available on request")+'</div>'+status+enquire+'</div></article>';
+ }).join("");
 }
-
 document.getElementById("search").addEventListener("input",render);
-
 document.getElementById("sort").addEventListener("change",render);
-
 render();
-
 </script>
-
 </body>
-
 </html>
