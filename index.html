@@ -214,7 +214,7 @@ function render(){
 
  if(sort==="high")list.sort((a,b)=>b[1]-a[1]);
 
- grid.innerHTML=list.map(p=>`<article class="card"><div class="photo">${p[3]?`<img src="${p[3][0]}" alt="${p[0]}" onerror="this.parentElement.textContent='TANAMANCANTIK® · PLANT PHOTO'">`:"TANAMANCANTIK® · PLANT PHOTO"}</div><div class="cardbody"><h3>${p[0]}</h3><div class="price">$${p[1].toLocaleString("en-US")} USD</div><div class="details">${p[2]||"Details available on request"}</div><a href="https://www.instagram.com/tanamancantik_/" target="_blank" rel="noopener">ENQUIRE ABOUT THIS PLANT ↗</a></div></article>`).join("");
+grid.innerHTML=list.map(p=>`<article class="card"><div class="photo">${p[3]?p[3].map(src=>`<img src="${src}" alt="${p[0]}" style="width:${100/p[3].length}%;height:100%;object-fit:cover">`).join(""):"TANAMANCANTIK® · PLANT PHOTO"}</div><div class="cardbody"><h3>${p[0]}</h3><div class="price">$${p[1].toLocaleString("en-US")} USD</div><div class="details">${p[2]||"Details available on request"}</div><a href="https://www.instagram.com/tanamancantik_/" target="_blank" rel="noopener">ENQUIRE ABOUT THIS PLANT ↗</a></div></article>`).join("");
 
 }
 
