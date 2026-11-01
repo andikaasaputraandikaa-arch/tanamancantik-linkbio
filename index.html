@@ -31,10 +31,20 @@ input{flex:1;min-width:170px}
 .card{background:var(--panel);border:1px solid var(--line);min-width:0;overflow:hidden}
 .photo{height:210px;background:#24251f;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#8e8d80;text-align:center;padding:10px}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:0}
-.photo-gallery a{display:block;min-width:0;height:100%;overflow:hidden}
-.photo-gallery img{transition:transform .35s ease}
-.photo-gallery a:hover img{transform:scale(1.04)}
+.photo-gallery{display:block;padding:0;height:auto;background:#171812}
+.gallery-main{display:block;width:100%;height:230px;padding:0;border:0;background:#171812;cursor:zoom-in;overflow:hidden}
+.gallery-main img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.gallery-main:hover img{transform:scale(1.025)}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding:3px;background:var(--bg)}
+.gallery-thumb{height:66px;padding:0;border:0;background:#24251f;overflow:hidden;cursor:pointer;opacity:.72}
+.gallery-thumb[aria-pressed="true"]{opacity:1;outline:1px solid var(--gold);outline-offset:-1px}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(92vw,1000px);max-height:82vh;object-fit:contain}
+.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;border:1px solid #777;background:#171812;color:#fff;padding:12px 16px;font-size:20px;cursor:pointer}
+.lightbox-close{top:18px;right:18px}.lightbox-prev{left:16px;top:50%;transform:translateY(-50%)}.lightbox-next{right:16px;top:50%;transform:translateY(-50%)}
+.lightbox-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#ddd;font-size:12px;letter-spacing:1px}
 .cardbody{padding:17px}
 .card h3{font-family:Georgia,serif;font-size:19px;font-weight:400;line-height:1.35;margin:0 0 8px}
 .price{color:var(--gold);font-size:17px;margin:10px 0}
@@ -46,7 +56,7 @@ input{flex:1;min-width:170px}
 .contact{background:#191a16;text-align:center;padding:55px 20px;margin-top:35px}
 footer{border-top:1px solid var(--line);padding:25px 6%;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:180px}}
-@media(max-width:480px){header{padding:18px 5%}nav{gap:12px;font-size:10px}.brand{font-size:13px}.hero{padding:65px 5% 45px}section{padding:35px 5%}.grid{gap:10px}.photo{height:135px}.cardbody{padding:12px}.card h3{font-size:16px}.price{font-size:15px}.photo-gallery{gap:2px}}
+@media(max-width:600px){header{padding:18px 5%}nav{gap:12px;font-size:10px}.brand{font-size:13px}.hero{padding:65px 5% 45px}section{padding:35px 5%}.grid{grid-template-columns:1fr;gap:14px}.photo{height:220px}.gallery-main{height:270px}.gallery-thumb{height:78px}.cardbody{padding:16px}.card h3{font-size:19px}.price{font-size:17px}.lightbox{padding:12px}.lightbox-prev{left:6px}.lightbox-next{right:6px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 </style>
 </head>
@@ -75,6 +85,13 @@ footer{border-top:1px solid var(--line);padding:25px 6%;color:var(--muted);font-
 <div class="contact" id="contact"><div class="eyebrow">GET IN TOUCH</div><h2>Find your next rare plant.</h2><p class="muted">Ask us about availability, plant details and international shipping.</p><a class="btn" href="https://www.instagram.com/tanamancantik_/" target="_blank" rel="noopener noreferrer">CONTACT ON INSTAGRAM ↗</a></div>
 </main>
 <footer><span>TANAMANCANTIK®</span><span>Rare plants. Extraordinary forms.</span><span>© 2026</span></footer>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Plant photo viewer">
+<button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close photo viewer">×</button>
+<button class="lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous photo">‹</button>
+<img id="lightboxImage" src="" alt="">
+<button class="lightbox-next" id="lightboxNext" type="button" aria-label="Next photo">›</button>
+<div class="lightbox-count" id="lightboxCount"></div>
+</div>
 <script>
 const plants=[
 {name:"Megatron × Carlablackiae",price:475,details:"Rare collectible Anthurium",photos:["IMG_3250.jpeg","IMG_3234.jpeg","IMG_3251.jpeg"]},
@@ -117,14 +134,51 @@ function render(){
  if(sort==="high")list.sort((a,b)=>(b.price??-Infinity)-(a.price??-Infinity));
  grid.innerHTML=list.map(p=>{
   const gallery=p.photos?.length
-   ?'<div class="photo photo-gallery">'+p.photos.map((src,i)=>'<a href="'+src+'" target="_blank" rel="noopener noreferrer" aria-label="Open photo '+(i+1)+' of '+p.name+'"><img src="'+src+'" alt="'+p.name+' — photo '+(i+1)+'" loading="lazy"></a>').join("")+'</div>'
-   :'<div class="photo">TANAMANCANTIK® · PLANT PHOTO</div>';
+   ?'<div class="photo photo-gallery"><button class="gallery-main" type="button" data-gallery-open="'+p.photos[0]+'" data-gallery-index="0" aria-label="View large photo of '+p.name+'"><img src="'+p.photos[0]+'" alt="'+p.name+'" loading="lazy"></button><div class="gallery-thumbs">'+p.photos.map((src,i)=>'<button class="gallery-thumb" type="button" data-gallery-select="'+src+'" data-gallery-index="'+i+'" data-gallery-name="'+p.name+'" aria-pressed="'+(i===0?'true':'false')+'" aria-label="Show photo '+(i+1)+'"><img src="'+src+'" alt="" loading="lazy"></button>').join("")+'</div></div>'
+   :'<div class="photo">PHOTO COMING SOON</div>';
   const status=p.displayOnly?'<span class="status display">Display only · Not for sale</span>':'<span class="status">Stock unconfirmed</span>';
   const price=p.displayOnly?'<div class="price">Not for sale</div>':'<div class="price">$'+p.price.toLocaleString("en-US")+' USD</div>';
   const enquire=p.displayOnly?'':'<a class="enquire" href="'+instagram+'" target="_blank" rel="noopener noreferrer">ENQUIRE ABOUT THIS PLANT ↗</a>';
   return '<article class="card">'+gallery+'<div class="cardbody"><h3>'+p.name+'</h3>'+price+'<div class="details">'+(p.details||"Details available on request")+'</div>'+status+enquire+'</div></article>';
  }).join("");
 }
+let activePhotos=[],activePhotoIndex=0;
+const lightbox=document.getElementById("lightbox");
+const lightboxImage=document.getElementById("lightboxImage");
+function showLightbox(index){
+ if(!activePhotos.length)return;
+ activePhotoIndex=(index+activePhotos.length)%activePhotos.length;
+ lightboxImage.src=activePhotos[activePhotoIndex];
+ lightboxImage.alt="Plant photo "+(activePhotoIndex+1);
+ document.getElementById("lightboxCount").textContent=(activePhotoIndex+1)+" / "+activePhotos.length;
+ lightbox.classList.add("open");
+}
+function closeLightbox(){lightbox.classList.remove("open");lightboxImage.src="";}
+grid.addEventListener("click",event=>{
+ const thumb=event.target.closest("[data-gallery-select]");
+ if(thumb){
+  const card=thumb.closest(".card");
+  card.querySelector(".gallery-main img").src=thumb.dataset.gallerySelect;
+  card.querySelector(".gallery-main").dataset.galleryIndex=thumb.dataset.galleryIndex;
+  card.querySelectorAll(".gallery-thumb").forEach(b=>b.setAttribute("aria-pressed",String(b===thumb)));
+  return;
+ }
+ const open=event.target.closest("[data-gallery-open]");
+ if(open){
+  const card=open.closest(".card");
+  activePhotos=Array.from(card.querySelectorAll(".gallery-thumb")).map(b=>b.dataset.gallerySelect);
+  showLightbox(Number(open.dataset.galleryIndex||0));
+ }
+});
+document.getElementById("lightboxClose").addEventListener("click",closeLightbox);
+document.getElementById("lightboxPrev").addEventListener("click",()=>showLightbox(activePhotoIndex-1));
+document.getElementById("lightboxNext").addEventListener("click",()=>showLightbox(activePhotoIndex+1));
+lightbox.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox();});
+document.addEventListener("keydown",event=>{
+ if(event.key==="Escape")closeLightbox();
+ if(lightbox.classList.contains("open")&&event.key==="ArrowLeft")showLightbox(activePhotoIndex-1);
+ if(lightbox.classList.contains("open")&&event.key==="ArrowRight")showLightbox(activePhotoIndex+1);
+});
 document.getElementById("search").addEventListener("input",render);
 document.getElementById("sort").addEventListener("change",render);
 render();
